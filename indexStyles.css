@@ -84,7 +84,7 @@
 
         #carruselCursos .col-md-4 {
             flex: 0 0 auto;
-            margin-right: 5px;
+            margin-right: 2px;
             /* Ajusta según sea necesario */
         }
         #carruselCursos .card {
@@ -167,10 +167,38 @@
         }
 
         section {
+            margin-top: auto;
             margin-bottom: 80px; /* Ajusta según sea necesario para dejar suficiente espacio */
+            max-width: 1200px; /* Ajusta según sea necesario */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #3B0B0B;
+            padding: 10px;
+            border-radius: 20px;
         }
         .carrusel-container {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: auto;
           }
+
+          .container.mt-4 {
+            background-color: #3B0B0B;
+            /* Tono vino oscuro */
+            color: #fff;
+            /* Texto blanco */
+            padding: 20px;
+            /* Ajustar el espacio interno según sea necesario */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            max-width: 800px; /* Ajusta según sea necesario */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card-img-top {
+            height: 200px; /* Ajusta según sea necesario */
+            object-fit: cover;
+        }
+        .card{
+            margin-bottom: 120px;
+        }
