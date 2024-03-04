@@ -1,202 +1,237 @@
-        /* Cambiar color principal a tono vino oscuro */
-        .navbar.navbar-light {
-            background: #3B0B0B;
-            /* Tono vino oscuro */
-        }
+nav {
+  width: 100%;
+  height: 80px;
+}
 
-        .navbar-light .navbar-brand,
-        .navbar-light .navbar-toggler-icon,
-        .navbar-light .navbar-nav .nav-link {
-            color: #fff !important;
-            /* Texto blanco */
+/* Cambiar color principal a tono vino oscuro */
+.navbar.navbar-light {
+  background: black;
+  /* Tono vino oscuro */
+}
 
-        }
+.navbar-light .navbar-brand,
+.navbar-light .navbar-toggler-icon,
+.navbar-light .navbar-nav .nav-link {
+  color: #fff !important;
+  /* Texto blanco */
+}
 
-        .navbar-brand {
-            margin-left: 10px;
-            /* Margen para el texto de radiant vision */
-        }
+.navbar-brand {
+  margin-left: 18px;
+  /* Margen para el texto de radiant vision */
+  font-size: 24px;
+  font-weight: 600;
+}
 
-        .navbar-light .navbar-toggler {
-            border-color: #fff;
-            /* Borde blanco para el botón con forma de hamburguesa */
-        }
 
-        .navbar-light .navbar-toggler-icon {
-            background-color: #fff;
-            /* Fondo blanco para el botón con forma de hamburguesa */
-        }
+.navbar-nav .nav-link {
+  font-size: 20px; /* Puedes ajustar el tamaño del texto aquí según tu preferencia */
+}
 
-        /* Cambiar fondo a un tono grisáceo oscuro */
-        body {
-            padding-top: 56px;
-            background-color: #333;
-            /* Gris oscuro */
-            color: #fff;
-            /* Texto blanco */
-        }
+.navbar-nav .nav-link:hover {
+    background-color: #333333; /* Cambia el color de fondo al pasar el mouse */
+    border-radius: 10px; /* Bordes redondeados */
+  }
 
-        /* Cambiar fondo de header a vino */
-        header {
-            background-color: #3B0B0B;
-            /* Tono vino oscuro */
-        }
+.navbar-nav .nav-item {
+  margin-right: 16px; /* Ajusta el margen derecho según lo necesites */
+}
 
-        /* Cambiar fondo de la sección de cursos a vino */
-        .container.mt-4 {
-            background-color: #3B0B0B;
-            /* Tono vino oscuro */
-            color: #fff;
-            /* Texto blanco */
-            padding: 20px;
-            /* Ajustar el espacio interno según sea necesario */
-            border-radius: 10px;
-            /* Bordes redondeados */
-        }
+.navbar-light .navbar-toggler {
+  border-color: #fff;
+  /* Borde blanco para el botón con forma de hamburguesa */
+}
 
-        /* Cambiar el color del botón de los cursos a vino */
-        .btn-primary {
-            background-color: #3B0B0B;
-            /* Tono vino oscuro */
-            border-color: #3B0B0B;
-            /* Borde vino oscuro */
-        }
+.navbar-light .navbar-toggler-icon {
+  background-color: #fff;
+  /* Fondo blanco para el botón con forma de hamburguesa */
+}
 
-        @media (min-width: 768px) {
-            .container.mt-4 {
-                margin-left: 30px;
-                margin-right: 30px;
-            }
-        }
-        
+/* Cambiar fondo a un tono grisáceo oscuro */
+body {
+  padding-top: 56px;
+  background-color: #333;
+  /* Gris oscuro */
+  color: #fff;
+  /* Texto blanco */
+}
 
-        /* Estilos personalizados para el carrusel */
-        #carruselCursos .carousel-inner {
-            display: flex;
-            flex-wrap: nowrap;
-        }
+/* Cambiar fondo de header a vino */
+header {
+  background-color: #3b0b0b;
+  /* Tono vino oscuro */
+}
 
-        #carruselCursos .carousel-item {
-            width: 100%;
-            /* Ajusta según sea necesario */
-            transition: transform 0.6s ease;
-        }
+header .display-4 {
+  font-weight: 600;
+  /* Puedes ajustar el grosor aquí */
+}
 
-        #carruselCursos .col-md-4 {
-            flex: 0 0 auto;
-            margin-right: 2px;
-            /* Ajusta según sea necesario */
-        }
-        #carruselCursos .card {
-            margin: 0 5px; /* Ajusta según sea necesario */
-        }
+header .lead {
+  font-weight: 400;
+  /* Puedes ajustar el grosor aquí */
+}
 
-        /* Estilos para los botones del carrusel */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 50px;
-            /* Tamaño del cuadro de botón */
-            height: 50px;
-            background-color: transparent;
-            /* Fondo transparente */
-            border: none;
-            /* Sin borde */
-            border-radius: 5px;
-            /* Bordes redondeados */
-            font-size: 24px;
-            /* Tamaño del ícono */
-            color: gray;
-            /* Color de los botones */
-            margin-top: 150px;
-            /* Ajusta según sea necesario para bajar los botones */
-        }
+.container.mt-4 h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 0px;
+  padding-bottom: 40px;
+}
 
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: gray;
-            /* Color de fondo de los íconos */
-            border-radius: 5px;
-            /* Bordes redondeados de los íconos */
-            padding: 10px;
-            /* Relleno de los íconos */
-        }
+/* Cambiar fondo de la sección de cursos a vino */
+.container.mt-4 {
+  background-color: #3b0b0b;
+  /* Tono vino oscuro */
+  color: #fff;
+  /* Texto blanco */
+  padding: 20px;
+  /* Ajustar el espacio interno según sea necesario */
+  border-radius: 10px;
+  /* Bordes redondeados */
+}
 
-        /* Cambiar color al pasar el ratón sobre los botones */
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background-color: #ddd;
-            /* Cambiar el color al pasar el ratón */
-        }
+/* Cambiar el color del botón de los cursos a vino */
+.btn-primary {
+  background-color: #000000;
+  /* Tono vino oscuro */
+  border-color: #ffffff;
+  /* Borde vino oscuro */
+}
 
-        /* Estilos personalizados para el header con video de fondo */
-        header {
-            position: relative;
-            height: 60vh; /* Ajusta la altura del header según sea necesario */
-            min-height: 400px; /* Establece una altura mínima para evitar que el header sea demasiado pequeño */
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-    
-        #videoFondo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(8px); /* Ajusta el valor de blur según sea necesario */
-        }
+@media (min-width: 768px) {
+  .container.mt-4 {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
 
-        #textoSobreVideo {
-            z-index: 1;
-        }
+/* Estilos personalizados para el carrusel */
+#carruselCursos .carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;
+}
 
-        /* Estilos para el footer */
-        footer {
-            background-color: #333; /* Color de fondo del footer */
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+#carruselCursos .carousel-item {
+  width: 100%;
+  /* Ajusta según sea necesario */
+  transition: transform 0.6s ease;
+}
 
-        section {
-            margin-top: auto;
-            margin-bottom: 80px; /* Ajusta según sea necesario para dejar suficiente espacio */
-            max-width: 1200px; /* Ajusta según sea necesario */
-            margin-left: auto;
-            margin-right: auto;
-            background-color: #3B0B0B;
-            padding: 10px;
-            border-radius: 20px;
-        }
-        .carrusel-container {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-          }
+#carruselCursos .col-md-4 {
+  flex: 0 0 auto;
+  margin-right: 2px;
+  /* Ajusta según sea necesario */
+}
+#carruselCursos .card {
+  margin: 0 5px; /* Ajusta según sea necesario */
+}
 
-          .container.mt-4 {
-            background-color: #3B0B0B;
-            /* Tono vino oscuro */
-            color: #fff;
-            /* Texto blanco */
-            padding: 20px;
-            /* Ajustar el espacio interno según sea necesario */
-            border-radius: 10px;
-            /* Bordes redondeados */
-            max-width: 800px; /* Ajusta según sea necesario */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .card-img-top {
-            height: 200px; /* Ajusta según sea necesario */
-            object-fit: cover;
-        }
-     
+/* Estilos para los botones del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  /* Tamaño del cuadro de botón */
+  height: 50px;
+  background-color: transparent;
+  /* Fondo transparente */
+  border: none;
+  /* Sin borde */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  font-size: 24px;
+  /* Tamaño del ícono */
+  color: gray;
+  /* Color de los botones */
+  margin-top: 150px;
+  /* Ajusta según sea necesario para bajar los botones */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: gray;
+  /* Color de fondo de los íconos */
+  border-radius: 5px;
+  /* Bordes redondeados de los íconos */
+  padding: 10px;
+  /* Relleno de los íconos */
+}
+
+/* Cambiar color al pasar el ratón sobre los botones */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #ddd;
+  /* Cambiar el color al pasar el ratón */
+}
+
+/* Estilos personalizados para el header con video de fondo */
+header {
+  position: relative;
+  height: 60vh; /* Ajusta la altura del header según sea necesario */
+  min-height: 400px; /* Establece una altura mínima para evitar que el header sea demasiado pequeño */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+#videoFondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px); /* Ajusta el valor de blur según sea necesario */
+}
+
+#textoSobreVideo {
+  z-index: 1;
+}
+
+/* Estilos para el footer */
+footer {
+  background-color: #333; /* Color de fondo del footer */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+section {
+  margin-top: auto;
+  margin-bottom: 80px; /* Ajusta según sea necesario para dejar suficiente espacio */
+  max-width: 1200px; /* Ajusta según sea necesario */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #3b0b0b;
+  padding: 10px;
+  border-radius: 20px;
+}
+.carrusel-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.container.mt-4 {
+  background-color: #ca3744;
+  /* Tono vino oscuro */
+  color: #fff;
+  /* Texto blanco */
+  padding: 20px;
+  /* Ajustar el espacio interno según sea necesario */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  max-width: 800px; /* Ajusta según sea necesario */
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-img-top {
+  height: 200px; /* Ajusta según sea necesario */
+  object-fit: cover;
+}
