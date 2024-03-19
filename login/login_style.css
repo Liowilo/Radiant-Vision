@@ -207,3 +207,32 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+.toggle-panel button {
+    background-color: transparent;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Pseudo-elemento para crear el efecto de relleno */
+.toggle-panel button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+    z-index: -1; /* Para que el pseudo-elemento esté detrás del contenido del botón */
+}
+
+/* Estilos cuando el cursor está sobre el botón */
+.toggle-panel button:hover::before {
+    width: 100%; /* Cambia el ancho del pseudo-elemento al 100% al hacer hover */
+}
