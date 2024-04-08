@@ -6,9 +6,36 @@ This is a temporary script file.
 """
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
+import re
 
-PATH = "D:/AppsWeb/Radiant-Vision/eclipsa/chromedriver.exe"
+##OBTENER HTML DEL PERFIL DEL JUGADOR
 
-driver = webdriver.Chrome(executable_path=PATH)
+driver = webdriver.Chrome()
+driver.set_page_load_timeout(12)
+driver.get("https://tracker.gg/valorant/profile/riot/CDCGatoEstirado%23NR23/overview")
+html = driver.page_source
 
-driver.get("https://tracker.gg/valorant")
+##Extraer Estadisticas
+
+patron = r'<span class="value" data-v-01072c71="">([+-]?([0-9]*[.])?[0-9]+%?)</span>'
+item_names = re.findall(patron, str(html))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
