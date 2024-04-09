@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 import time
 import re
 
+
 ##OBTENER HTML DEL PERFIL DEL JUGADOR
 
 driver = webdriver.Chrome()

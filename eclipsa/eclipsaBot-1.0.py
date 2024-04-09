@@ -23,10 +23,11 @@ browser = uc.Chrome()
 url = "https://tracker.gg/valorant/profile/riot/CDC%20JuuzouJoseph%23Okami/overview"
 browser.get(url)
 browser.implicitly_wait(10)
+
+##Tobtener y acomodar HTML
+
 html = browser.page_source
 print(html)
-
-##Reacomodar HTML
 
 soup = bs(html, 'lxml')
 soup
@@ -37,19 +38,19 @@ browser.quit()
 
 ##Extraccion de datos de IDENTIFICACION
 
-player = soup.find('span', {'class':'trn-ign__username'}).text
+player = soup.find('span', {'class':'trn-ign__username'}).text.strip()
 player
 tag = soup.find('span', {'class':'trn-ign__discriminator'}).text
 tag
 
 ##Extraccion de stats
 #Intento1 No sirve
-rank = soup.find('div', {'class':'rating-entry__rank-info'}).text.strip()
-rank
+##rank = soup.find('div', {'class':'rating-entry__rank-info'}).text.strip()
+##rank
 
 #Posible sentencia 2
-pruebaRank =soup.find('div', {'class': ['rating-summary__content','rating-entry__rank-info','value']}).text.strip()
-pruebaRank
+##pruebaRank =soup.find('div', {'class': ['rating-summary__content','rating-entry__rank-info','value']}).text.strip()
+##pruebaRank
 
 rank = soup.find('div', {'class':'rating-summary__content','class':'rating-entry__rank-info','class':'value'}).text.strip()
 rank
@@ -57,3 +58,62 @@ rank
 
 peakrank = soup.find('div', {'class':'rating-summary__content rating-summary__content--secondary','class':'rating-entry__rank-info','class':'value'}).text.strip()
 peakrank
+
+numberWins = soup.find('span', {'class':'wins'}).text[:-1]
+numberWins
+
+
+numberLose = soup.find('span', {'class':'losses'}).text[:-1]
+numberLose
+
+winrate = soup.find('span', {'class':'muted'}).text[1:-2]
+winrate
+
+##Lista de estadisticas generales
+statList  = soup.find_all('div',{'class':'numbers'})
+##statList ----- Imprimir la lista
+
+avgCS = statList[10].find('span', {'class':'value'}).text
+kdaRatio = statList[11].find('span', {'class':'value'}).text
+killsPerRound = statList[12].find('span', {'class':'value'}).text
+avgDmgRound = statList[0].find('span', {'class':'value'}).text
+kills = statList[7].find('span', {'class':'value'}).text
+deadths = statList[8].find('span', {'class':'value'}).text
+assist = statList[9].find('span', {'class':'value'}).text
+
+#Lista de Accuracy
+
+accuracyList = soup.find_all('td',{'class':'stat'})
+accuracyList ##----- Imprimir la lista
+
+headPercent =accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
+headPercent
+boddyPercent = accuracyList[2].find('span', {'class':'stat__value'}).text[:-1]
+boddyPercent
+legsPercent = accuracyList[4].find('span', {'class':'stat__value'}).text[:-1]
+legsPercent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
