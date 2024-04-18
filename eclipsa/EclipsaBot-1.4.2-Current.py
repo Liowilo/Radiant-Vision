@@ -5,17 +5,14 @@ Created on Mon Apr 15 20:25:28 2024
 @author: jmame
 """
 
-import requests
 from bs4 import BeautifulSoup as bs
 import random
 import time
 import pandas as pd
-import numpy as np
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-import undetected_chromedriver as uc
+
+##---------------------------------------------------------------Lectura del CSV de Links------------------------------------------------##
 
 #Carga de datos
 df=pd.read_csv("D:/AppsWeb/Radiant-Vision/profileLinksDemo2.csv")
@@ -23,7 +20,8 @@ df.drop(['id'], axis=1, inplace=True)
 
 index=0
 link = df['link'][index]
-##print(link)
+
+##---------------------------------------------------------------Funcion de Extraccion y llenado de DF INDIVIDUALES------------------------------------------------##
 
 def parsearPerfiles(link):
     try:
@@ -52,13 +50,12 @@ def parsearPerfiles(link):
         browser.quit()
         
         ##Extraccion de datos de IDENTIFICACION
-        
+
         nickname = soup.find('span', {'class':'trn-ign__username'}).text.strip()
-        nickname
+        ##nickname
         tag = soup.find('span', {'class':'trn-ign__discriminator'}).text.strip()
-        tag
+        ##tag
         
-        ##Extraccion de datos de Elo y Winrate
         
         rankList = soup.find_all('div',{'class':'rating-entry'})
         rankList
@@ -67,28 +64,29 @@ def parsearPerfiles(link):
             currentRank = rankList[0].find('div', {'class':'value'}).text
             peakRank = rankList[1].find('div', {'class':'value'}).text
         else:
-           print("La lista de stats esta vacia")
-           
+            print("La lista de Rangos esta vacia")
         
         
-        #lista de Matches
+        ##Extraccion de datos de PARTIDAS
+        
         matchesList = soup.find_all('text', {'fill':'#fff'})
         ##matchesList       ##--------Imprimir la lista
         
-        numberWins = matchesList[0].text
-        numberWins
+        if rankList:
+            numberWins = matchesList[0].text
+            numberLose = matchesList[1].text
+        else:
+            print("La lista V/D esta vacia")
         
-        numberLose = matchesList[1].text
-        numberLose
         
-        ##Lista de estadisticas generales
+        ##Extraccion de datos de WINRATE Y COMBATE
         
         statList  = soup.find_all('div',{'class':'numbers'})
         ##statList     ###----- Imprimir la lista
         
         #Extraccion de Stats de Combate
         if statList:
-            winrate = statList[3].find('span', {'class':'value'}).text[:-1]        
+            winrate = statList[3].find('span', {'class':'value'}).text[:-1]
             avgCS = statList[10].find('span', {'class':'value'}).text
             kdaRatio = statList[11].find('span', {'class':'value'}).text
             killsPerRound = statList[12].find('span', {'class':'value'}).text
@@ -99,23 +97,20 @@ def parsearPerfiles(link):
         
         else:
             print("La lista de stats esta vacia")
-            
         
-        #Lista de Accuracy
+        
+        ##Extraccion de datos de PRECISION
         
         accuracyList = soup.find_all('td',{'class':'stat'})
-        accuracyList ##----- Imprimir la lista
+        ##accuracyList ##----- Imprimir la lista
         
-        if accuracyList:
-            ##Extraccion de datos de Precision
-            headPercent =accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
-            headPercent
+        if accuracyList:  # Verificar si accuracyList no está vacía
+            headPercent = accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
             boddyPercent = accuracyList[2].find('span', {'class':'stat__value'}).text[:-1]
-            boddyPercent
             legsPercent = accuracyList[4].find('span', {'class':'stat__value'}).text[:-1]
-            legsPercent
+            # Continuar con el procesamiento de los datos...
         else:
-            print("La lista accuracyList está vacía. No se pueden extraer los datos de precisión.")
+            print("La lista accuracyList está vacía")
             
             
         ##LLENADO DE DATAFRAME
@@ -125,23 +120,25 @@ def parsearPerfiles(link):
                    'avgDmgRound':avgDmgRound, 'kills':kills, 'deaths':deadths, 'assist':assist, 
                    'headPercent':headPercent, 'boddyPercent':boddyPercent, 'legsPercent':legsPercent}])
         
-        df_statsDemo = pd.DataFrame(player)
-        return (df_statsDemo)
+        df_stats = pd.DataFrame(player)
+        return (df_stats)
     except:
         print("Profile Error")
         return None
+    
+##---------------------------------------------------------------LLENADO Y CONCATENADO DE DF FINAL------------------------------------------------##
 ##Repertir busqueda con otro perfil
-df_statsDemo_list = []  # Lista para almacenar los DataFrames individuales
+df_stats_list = []  # Lista para almacenar los DataFrames individuales
 
 if not df.empty:
     for i in range(len(df)):
-        df_statsDemo_list.append(parsearPerfiles(df['link'][i]))
+        df_stats_list.append(parsearPerfiles(df['link'][i]))
         time.sleep(random.randint(4, 8))
 else:
     print("El DataFrame df está vacío. No hay datos para procesar.")
 
 # Concatenar todos los DataFrames de la lista en uno solo
-df_statsDemo = pd.concat(df_statsDemo_list, ignore_index=False)
+df_statsDemo = pd.concat(df_stats_list, ignore_index=False)
 
 ##Resetear indice y guardar datos en CSV
-df_statsDemo.to_csv("statsPlayersDemo.csv", index = True, sep = ';', encoding = 'utf-16')
+df_statsDemo.to_csv("statsPlayersDemo.csv", index = False, sep = ',', encoding = 'utf-16')
