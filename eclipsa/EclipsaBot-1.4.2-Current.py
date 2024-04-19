@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 ##---------------------------------------------------------------Lectura del CSV de Links------------------------------------------------##
 
 #Carga de datos
-df=pd.read_csv("D:/AppsWeb/Radiant-Vision/profileLinksDemo2.csv")
+df=pd.read_csv("D:/AppsWeb/Radiant-Vision/profileLinksComplete.csv")
 df.drop(['id'], axis=1, inplace=True)
 
 index=0
@@ -27,7 +27,7 @@ def parsearPerfiles(link):
     try:
         ##Busqueda del perfil    
         options = Options()
-        options.page_load_strategy = 'normal'
+        #options.page_load_strategy = 'normal'
         browser = webdriver.Chrome(options=options)
         browser.set_page_load_timeout(30)
         url = link
@@ -43,7 +43,7 @@ def parsearPerfiles(link):
         html = browser.page_source
         #print(html)   ###----Imprimir HTML sin acomodar
         soup = bs(html, 'lxml')
-        soup           ###----Imrimir HTML acomodado
+        ##print(soup)          ###----Imrimir HTML acomodado
         
         ##Cerrar pestaña y navegador
         browser.close()
@@ -70,7 +70,7 @@ def parsearPerfiles(link):
         ##Extraccion de datos de PARTIDAS
         
         matchesList = soup.find_all('text', {'fill':'#fff'})
-        ##matchesList       ##--------Imprimir la lista
+        matchesList       ##--------Imprimir la lista
         
         if rankList:
             numberWins = matchesList[0].text
@@ -82,7 +82,7 @@ def parsearPerfiles(link):
         ##Extraccion de datos de WINRATE Y COMBATE
         
         statList  = soup.find_all('div',{'class':'numbers'})
-        ##statList     ###----- Imprimir la lista
+        statList     ###----- Imprimir la lista
         
         #Extraccion de Stats de Combate
         if statList:
@@ -102,7 +102,7 @@ def parsearPerfiles(link):
         ##Extraccion de datos de PRECISION
         
         accuracyList = soup.find_all('td',{'class':'stat'})
-        ##accuracyList ##----- Imprimir la lista
+        accuracyList ##----- Imprimir la lista
         
         if accuracyList:  # Verificar si accuracyList no está vacía
             headPercent = accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
@@ -133,12 +133,12 @@ df_stats_list = []  # Lista para almacenar los DataFrames individuales
 if not df.empty:
     for i in range(len(df)):
         df_stats_list.append(parsearPerfiles(df['link'][i]))
-        time.sleep(random.randint(4, 8))
+        time.sleep(10)
 else:
     print("El DataFrame df está vacío. No hay datos para procesar.")
 
 # Concatenar todos los DataFrames de la lista en uno solo
-df_statsDemo = pd.concat(df_stats_list, ignore_index=False)
+df_stats = pd.concat(df_stats_list, ignore_index=False)
 
 ##Resetear indice y guardar datos en CSV
-df_statsDemo.to_csv("statsPlayersDemo.csv", index = False, sep = ',', encoding = 'utf-16')
+df_stats.to_csv("statsPlayersBig.csv", index = False, sep = ',', encoding = 'utf-16')

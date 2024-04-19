@@ -15,9 +15,9 @@ from selenium.webdriver.chrome.options import Options
 ##---------------------------------------------------------------Extraer HTML------------------------------------------------##
 
 options = Options()
-options.page_load_strategy = 'normal'
+##options.page_load_strategy = 'normal'
 browser = webdriver.Chrome(options=options)
-browser.set_page_load_timeout(20)
+browser.set_page_load_timeout(50)
 url = "https://tracker.gg/valorant/profile/riot/gyro%23YNXO/overview"
 
 try:
@@ -92,12 +92,12 @@ else:
 ##Extraccion de datos de PRECISION
 
 accuracyList = soup.find_all('td',{'class':'stat'})
-##accuracyList ##----- Imprimir la lista
+accuracyList ##----- Imprimir la lista
 
 if accuracyList:  # Verificar si accuracyList no está vacía
-    headPercent = accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
-    boddyPercent = accuracyList[2].find('span', {'class':'stat__value'}).text[:-1]
-    legsPercent = accuracyList[4].find('span', {'class':'stat__value'}).text[:-1]
+    headshots = accuracyList[0].find('span',{'class':'stat__value'}).text[:-1]
+    boddyshots = accuracyList[2].find('span', {'class':'stat__value'}).text[:-1]
+    legsshots = accuracyList[4].find('span', {'class':'stat__value'}).text[:-1]
     # Continuar con el procesamiento de los datos...
 else:
     print("La lista accuracyList está vacía")
@@ -107,7 +107,7 @@ else:
 playerData = pd.DataFrame([{'riotID':player, 'tag':tag, 'currentRank':currentRank, 'peakRank':peakRank, 'numWins':numberWins, 
            'numLose':numberLose, 'winrate':winrate, 'avgCS':avgCS, 'KDArat':kdaRatio, 'kpr':killsPerRound, 
            'avgDmgRound':avgDmgRound, 'kills':kills, 'deaths':deadths, 'assist':assist, 
-           'headPercent':headPercent, 'boddyPercent':boddyPercent, 'legsPercent':legsPercent}])
+           'headPercent':headshots, 'boddyPercent':boddyshots, 'legsPercent':legsshots}])
 
 playerData
 
