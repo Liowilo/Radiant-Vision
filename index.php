@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,7 +21,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #000000">
     <div class="container-fluid d-flex justify-content-between">
-      <a class="navbar-brand" href="#">Radiant Vision</a>
+      <a class="navbar-brand" href="index.php">Radiant Vision</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,10 +29,10 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: 10px; margin-bottom: 10px">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="./cursos/index.html">Cursos</a>
+            <a class="nav-link active" href="cursos/cursos.php">Cursos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">Análisis de partida</a>
@@ -51,8 +53,8 @@
         </ul>
       </div>
       <div class="d-inline-flex mr-2">
-        <a href="login/login.html" class="btn btn-outline-light mx-2" role="button">Iniciar sesión</a>
-        <a href="login/login.html" class="btn btn-outline-light" role="button">Registrarse</a>
+        <a href="login/login.php" class="btn btn-outline-light mx-2" role="button">Iniciar sesión</a>
+        <a href="login/login.php" class="btn btn-outline-light" role="button">Registrarse</a>
       </div>
     </div>
   </nav>
